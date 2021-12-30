@@ -12,7 +12,6 @@
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
     "react-service-worker": "^0.1.1",
-    "react-webcam": "^6.0.0",
     "serve": "^11.3.2",
     "web-vitals": "^0.2.4"
   },
