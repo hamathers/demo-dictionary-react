@@ -1,11 +1,13 @@
 import { Container, Switch, withStyles } from "@material-ui/core";
 import { grey } from "@material-ui/core/colors";
 import axios from "axios";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Definitions from "./components/Definitions/Definitions";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
+
+import Webcam from "react-webcam";
 
 function App() {
   // const [word, setWord] = useState("");
@@ -48,78 +50,55 @@ function App() {
   //   checked: {},
   //   track: {},
   // })(Switch);
-  const videoRef = useRef(null);
-  const photoRef = useRef(null);
-
-  useEffect(() => {
-    getVideo();
-  }, [videoRef]);
-
-  const getVideo = () => {
-    navigator.mediaDevices
-      .getUserMedia({
-        video: { width: window.innerWidth, height: window.innerHeight },
-      })
-      .then((stream) => {
-        let video = videoRef.current;
-        if (video) {
-          alert("havh");
-          video.srcObject = stream;
-          video.play();
-        }
-      })
-      .catch((err) => console.log("havh", err));
-  };
 
   return (
-    <div
-      className="App"
-      // style={{
-      //   height: "100vh",
-      //   backgroundColor: LightTheme ? "#fff" : "#282c34",
-      //   color: LightTheme ? "black" : "white",
-      //   transition: "all 0.5s linear",
-      // }}
-    >
-      {/* <Container
-        maxWidth="md"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          height: "100vh",
-          justifyContent: "space-evenly",
-        }}
-      >
-        <div
-          style={{ position: "absolute", top: 0, right: 15, paddingTop: 10 }}
-        >
-          <span>Chế độ {LightTheme ? "tối" : "sáng"}</span>
-          <PurpleSwitch
-            checked={LightTheme}
-            onChange={() => setLightTheme(!LightTheme)}
-          />
-        </div>
-        <Header
-          setWord={setWord}
-          category={category}
-          setCategory={setCategory}
-          word={word}
-          setMeanings={setMeanings}
-          LightTheme={LightTheme}
-        />
-        {meanings && (
-          <Definitions
-            meanings={meanings}
-            word={word}
-            LightTheme={LightTheme}
-            category={category}
-          />
-        )}
-      </Container>
-      <Footer /> */}
-      <video ref={videoRef}></video>
-      <canvas ref={photoRef}></canvas>
-    </div>
+    // <div
+    //   className="App"
+    //   style={{
+    //     height: "100vh",
+    //     backgroundColor: LightTheme ? "#fff" : "#282c34",
+    //     color: LightTheme ? "black" : "white",
+    //     transition: "all 0.5s linear",
+    //   }}
+    // >
+    //   <Container
+    //     maxWidth="md"
+    //     style={{
+    //       display: "flex",
+    //       flexDirection: "column",
+    //       height: "100vh",
+    //       justifyContent: "space-evenly",
+    //     }}
+    //   >
+    //     <div
+    //       style={{ position: "absolute", top: 0, right: 15, paddingTop: 10 }}
+    //     >
+    //       <span>Chế độ {LightTheme ? "tối" : "sáng"}</span>
+    //       <PurpleSwitch
+    //         checked={LightTheme}
+    //         onChange={() => setLightTheme(!LightTheme)}
+    //       />
+    //     </div>
+    //     <Header
+    //       setWord={setWord}
+    //       category={category}
+    //       setCategory={setCategory}
+    //       word={word}
+    //       setMeanings={setMeanings}
+    //       LightTheme={LightTheme}
+    //     />
+    //     {meanings && (
+    //       <Definitions
+    //         meanings={meanings}
+    //         word={word}
+    //         LightTheme={LightTheme}
+    //         category={category}
+    //       />
+    //     )}
+    //   </Container>
+    //   <Footer />
+    // </div>
+    <Webcam />
   );
 }
 
